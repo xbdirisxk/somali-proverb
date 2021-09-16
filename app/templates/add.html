@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block header %}
+<h2>new proverb</h2>
+{% endblock %} {% block content %}
+<form action="" method="POST" novalidate>
+	{{ form.hidden_tag() }}
+	<p>
+		{{ form.proverb.label }}<br />
+		{{ form.proverb(size=32, placeholder='maahmaah') }}<br />
+		{% for error in form.proverb.errors %}
+		<span style="color: red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+	<p>
+		{{ form.translation.label }}<br />
+		{{ form.translation(size=32, placeholder='translate') }}<br />
+		{% for error in form.translation.errors %}
+		<span style="color: red">[{{ error }}]</span>
+		{% endfor %}
+	</p>
+	<p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

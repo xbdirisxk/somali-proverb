@@ -11,13 +11,7 @@ from werkzeug.urls import url_parse
 @login_required
 def index():
     form = SomaliProverb()
-    if form.validate_on_submit():
-        proverb = Proverbs(proverb=form.proverb.data, translation=form.translation.data)
-        db.session.add(proverb)
-        db.session.commit()
-        flash('New proverb added')
-        return redirect(url_for('index'))
-    return render_template('proverbs.html', form=form, proverbs=Proverbs.query.all())
+    return render_template('index.html', form=form, proverbs=Proverbs.query.all())
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -54,6 +48,17 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/create', methods=['GET', 'POST'])
+def add():
+    form = SomaliProverb()
+    if form.validate_on_submit():
+        proverb = Proverbs(proverb=form.proverb.data, translation=form.translation.data)
+        db.session.add(proverb)
+        db.session.commit()
+        flash('New proverb added')
+        return redirect(url_for('index'))
+    return render_template('add.html', form=form)
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
