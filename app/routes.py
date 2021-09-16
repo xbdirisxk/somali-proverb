@@ -71,7 +71,9 @@ def delete(id):
     return redirect(url_for('index'))
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
 def edit(id):
+    proverb_data = Proverbs.query.get(id)
     form = UpdateForm()
     proverb = Proverbs.query.get_or_404(id)
     if form.save.data:
@@ -80,7 +82,7 @@ def edit(id):
         db.session.commit()
         flash('proverb updated')
         return redirect(url_for('index'))
-    return render_template('edit.html', form=form)
+    return render_template('edit.html', form=form, proverb=proverb_data.proverb, translation=proverb_data.translation)
 
 @app.route('/about', methods=['GET', 'POST'])
 @login_required

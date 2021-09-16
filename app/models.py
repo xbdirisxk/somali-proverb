@@ -28,4 +28,4 @@ class Proverbs(db.Model):
     translation = db.Column(db.String(300), nullable=True)
 
     def __repr__(self):
-        return f'<proverb={self.proverb} translate={self.translation}>'
+        return f'<id={self.id} proverb={self.proverb} translate={self.translation}>'

@@ -1,9 +1,10 @@
 {% extends "base.html" %} {% block header %}
-<h1>Proberbs</h1>
+<h1>Proverbs</h1>
+{% if not current_user.is_anonymous %}
 <a class="add-action btn btn-outline-dark" href="{{ url_for('add') }}"
 	>add proverb</a
 >
-{% endblock %} {% block content%} {% for p in proverbs %}
+{% endif %} {% endblock %} {% block content%} {% for p in proverbs %}
 <article class="post">
 	<header>
 		<div>
@@ -12,11 +13,16 @@
 			<!-- <div class="about">
 				by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}
 			</div> -->
-			--> #}
+			#}
 		</div>
+		{% if not current_user.is_anonymous %}
+		<a href="/edit/{{ p.id }}" class="del-action">
+			<i class="fa fa-edit"></i>
+		</a>
 		<a href="/delete/{{ p.id }}" class="del-action">
 			<i class="fa fa-trash-alt"></i>
 		</a>
+		{% endif %}
 	</header>
 	{% if p.translation %}
 	<p class="body"><span>Translation:</span> {{ p.translation }}</p>
