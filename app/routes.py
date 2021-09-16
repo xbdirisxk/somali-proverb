@@ -8,7 +8,7 @@ from werkzeug.urls import url_parse
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def index():
     form = SomaliProverb()
     return render_template('index.html', form=form, proverbs=Proverbs.query.all())
@@ -50,6 +50,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/create', methods=['GET', 'POST'])
+@login_required
 def add():
     form = SomaliProverb()
     if form.validate_on_submit():
@@ -61,6 +62,7 @@ def add():
     return render_template('add.html', form=form)
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
 def delete(id):
     proverb = Proverbs.query.get_or_404(id)
     db.session.delete(proverb)
@@ -68,8 +70,8 @@ def delete(id):
     flash('proverb deleted')
     return redirect(url_for('index'))
 
-'''@app.route('/update/<int:id>', methods=['GET', 'POST'])
-def update(id):
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
     form = UpdateForm()
     proverb = Proverbs.query.get_or_404(id)
     if form.save.data:
@@ -78,8 +80,9 @@ def update(id):
         db.session.commit()
         flash('proverb updated')
         return redirect(url_for('index'))
-    return render_template('update.html', form=form)'''
+    return render_template('edit.html', form=form)
 
 @app.route('/about', methods=['GET', 'POST'])
+@login_required
 def about():
     return render_template("about.html", user =current_user.username)

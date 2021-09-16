@@ -1,18 +1,28 @@
 {% extends "base.html" %} {% block content %}
 <head>
-  <style>
-    .main {
-      margin: 20px 90px;
-    }
-  </style>
+	<style>
+		.main {
+			margin: 20px 30px;
+		}
+	</style>
 </head>
 
 <div class="main">
-  <h2>Hi👋 I'm {{ user }}</h2>
-  <p> <h4>
-    I'am student in Abaarso Tech,<br />
-    I use this web app to share Somali proverbs with other users. <br />
-    my goal is to share largest number of somali proverbs with all people around the world :) </h4>
-  </p>
+	<h2>Hi👋 {{ user }}</h2>
+	<h4>
+		welcome to somali proverb web-app <br />
+		this web-app is for sharing somali proverbs with other users,<br />
+		just click add button and add proverbs that you remember <br />
+		plus, it's english translation if you need help use
+		<b>google-translation</b> (if you can't just leave the box empty) <br />
+		our goal is to share largest number of somali proverbs with all people
+		around the world :)
+	</h4>
+</div>
+<div class="dev-info">
+	<a href="https://github.com/abdirisakhd" target="_blank">
+		&copy2021 Abdirisak
+		<i class="fa fa-github"></i>
+	</a>
 </div>
 {% endblock %}

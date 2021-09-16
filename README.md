@@ -1,3 +1,7 @@
+# live preview
+
+[somali-proverb.herokuapp.com](https://somali-proverb.herokuapp.com/)
+
 # Getting Started
 
 1. Create and activate virtual environment
@@ -7,7 +11,8 @@
 5. Run `flask db migrate -m "proverb table"`
 6. Run `flask db upgrade`
 7. Run `flask run`
-   **WARNING**:_some pages are using Bootstrap style, so you need internet ,otherwise the pages may look like ugly or incomprehensible._
+
+_warning: you need internet for bootstrap styles ._
 
 # References
 

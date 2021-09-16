@@ -1,6 +1,6 @@
 html {
 	font-family: sans-serif;
-	background: #eee;
+	background: #e7d8d8;
 	/* padding: 1rem; */
 }
 body {
@@ -15,6 +15,7 @@ h1 {
 }
 a {
 	color: #377ba8;
+	text-decoration: none;
 }
 hr {
 	border: none;
@@ -81,4 +82,25 @@ header i {
 header a:hover {
 	color: hsl(0, 100%, 35%);
 	transition: 0.3s;
+}
+.dev-info {
+	position: absolute;
+	margin-top: 25px;
+	font-weight: 900;
+	font-family: monospace;
+	font-size: 0.9rem;
+}
+.dev-info > a > i {
+	font-size: 1.4rem;
+}
+.dev-info > a > i:hover {
+	transform: rotate(1turn);
+	transition: 0.8s;
+}
+.dev-info > a {
+	text-decoration: none;
+	color: #000;
+}
+.dev-info > a:hover {
+	color: #000;
 }
