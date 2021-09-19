@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os 
 from flask_login import LoginManager
 from flask_migrate import Migrate
+import re
 
 app = Flask(__name__)
 # config for forms 
