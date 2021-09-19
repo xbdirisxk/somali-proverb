@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'secret321'
 # config for db
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-uri = os.getenv("DATABASE_URL")  # or other relevant config var
+uri = os.environ.get("DATABASE_URL")  # or other relevant config var
 if uri is not None:
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
